@@ -50,6 +50,9 @@
   - Needs to be at `v14.0.2` to be able to run `Realm Studio` and `iOS Simulator` at same time
   - https://studio-releases.realm.io/v14.0.2
 
+
+![open-realm-url](https://raw.githubusercontent.com/kawgh1/Todoey-iOS13-Realm/main/open%20realm%20file.png)
+
 ## Our Goal
 
 
