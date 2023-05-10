@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwipeTableViewController {
     
-    var categoryArray = [Category]()
+    // initialize Realm
+    let realm = try! Realm()
     
-    // UIApplication.shared.delegate is the current running application delegate
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // Results is an auto-updating container type in Realm returned from object queries.
+    var categories : Results<Category>?
     
     
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -26,6 +27,8 @@ class CategoryViewController: UITableViewController {
         print(dataFilePath)
         
         loadCategories()
+        
+        tableView.rowHeight = 80.0
 
 
         
@@ -34,13 +37,15 @@ class CategoryViewController: UITableViewController {
     // MARK: - TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categoryArray.count
+        categories?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
-        cell.textLabel?.text = categoryArray[indexPath.row].name
+        // calls parent SwipeTableViewController cellForRowAt method which returns a SwipeTableViewCell
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+               
+        cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Yet!"
         
         return cell
     }
@@ -48,11 +53,13 @@ class CategoryViewController: UITableViewController {
     
     // MARK: - Data Model Manipulation Methods
     
-    func saveCategories() {
+    func saveCategory(category: Category) {
         
         do {
-            // Core Data save
-            try context.save()
+            // Realm Data save
+                try realm.write {
+                    realm.add(category)
+            }
         } catch {
             print("Error saving category, \(error)")
         }
@@ -60,17 +67,10 @@ class CategoryViewController: UITableViewController {
     }
     
     
-    func loadCategories(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
-
-        // redundant, default set in the parameter
-        // let request: NSFetchRequest<Category> = Category.fetchRequest()
+    func loadCategories() {
+  
+        categories = realm.objects(Category.self)
         
-        do {
-            // Core Data fetch
-            categoryArray = try context.fetch(request)
-        } catch {
-            print("Error fetching categories from context \(error)")
-        }
         tableView.reloadData()
     }
     
@@ -93,12 +93,10 @@ class CategoryViewController: UITableViewController {
             print(textField)
             if textField.text != "" {
                 
-                let newCategory = Category(context: self.context)
+                let newCategory = Category()
                 newCategory.name = textField.text!
                 
-                self.categoryArray.append(newCategory)
-                
-                self.saveCategories()
+                self.saveCategory(category: newCategory)
                 
             }
         }
@@ -118,7 +116,7 @@ class CategoryViewController: UITableViewController {
         let destinationViewController = segue.destination as! TodoListViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationViewController.selectedCategory = categoryArray[indexPath.row]
+            destinationViewController.selectedCategory = categories?[indexPath.row]
         }
         
     }
