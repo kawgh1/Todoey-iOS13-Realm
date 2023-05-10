@@ -35,7 +35,7 @@
   - In the root project folder, run `pod init`
   - open the podfile running `open Podfile -a Xcode`
   - keep `use_frameworks!`
-  - add `pod 'RealmSwift'`
+  - add `pod 'RealmSwift', '>= 10.0.0'`
   - close the pod file and go back to terminal root project folder
   - run `pod install` to install Realm and its dependencies 
   - https://cocoapods.org/pods/RealmSwift
@@ -47,7 +47,8 @@
 
 - ### Install `Realm Studio` to local machine
   - Realm Studio is a desktop application to manage Realm database operations
-  - [https://studio-releases.realm.io/v12.0.0](https://studio-releases.realm.io/v12.0.0)
+  - Needs to be at v 14.0.2 to be able to run Realm Studio and iOS Simulator
+  - https://studio-releases.realm.io/v14.0.2
 
 ## Our Goal
 
