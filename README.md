@@ -47,7 +47,7 @@
 
 - ### Install `Realm Studio` to local machine
   - Realm Studio is a desktop application to manage Realm database operations
-  - https://studio-releases.realm.io/v13.0.0
+  - [https://studio-releases.realm.io/v12.0.0](https://studio-releases.realm.io/v12.0.0)
 
 ## Our Goal
 
