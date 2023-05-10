@@ -1,6 +1,9 @@
 
 # Todoey ✓ using Realm
 
+### Dev Notes
+- I had to completely uninstall Cocoapods with Gem running `sudo gem uninstall cocoapods` and reinstall it with `homebrew` running `homebrew install cocoapods` because M1 Macs dont support the old Intel based architecture of the Gem Cocoapods library
+
 ## Our Goal
 
 
