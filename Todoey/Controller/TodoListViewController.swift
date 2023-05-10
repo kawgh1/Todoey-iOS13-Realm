@@ -23,15 +23,9 @@ class TodoListViewController: UITableViewController {
     // Results is an auto-updating container type in Realm returned from object queries.
     var todoItems: Results<Item>?
     
-    
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        // SQLite database is located  in Users/{user}/Library/Developer/CoreSimulator/Devices/{deviceId}/data/Containers/Data/Application/{applicationId}/Library/ApplicationSupport/DataModel.sqlite
-        print(dataFilePath)
         
     }
     

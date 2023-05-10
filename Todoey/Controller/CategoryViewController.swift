@@ -16,15 +16,9 @@ class CategoryViewController: SwipeTableViewController {
     
     // Results is an auto-updating container type in Realm returned from object queries.
     var categories : Results<Category>?
-    
-    
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // SQLite database is located  in Users/{user}/Library/Developer/CoreSimulator/Devices/{deviceId}/data/Containers/Data/Application/{applicationId}/Library/ApplicationSupport/DataModel.sqlite
-        print(dataFilePath)
         
         loadCategories()
         
