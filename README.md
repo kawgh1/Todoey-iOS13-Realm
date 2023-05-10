@@ -47,7 +47,7 @@
 
 - ### Install `Realm Studio` to local machine
   - Realm Studio is a desktop application to manage Realm database operations
-  - Needs to be at v 14.0.2 to be able to run Realm Studio and iOS Simulator
+  - Needs to be at `v14.0.2` to be able to run `Realm Studio` and `iOS Simulator` at same time
   - https://studio-releases.realm.io/v14.0.2
 
 ## Our Goal
