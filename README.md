@@ -31,13 +31,17 @@
 - ### Cocoapods
   - I had to completely uninstall `Cocoapods` with Gem running `sudo gem uninstall cocoapods` and reinstall it with `homebrew` running `homebrew install cocoapods` because M1 Macs dont support the old Intel based architecture of the Gem Cocoapods library
   
-- ###  Install `RealmSwift`
+- ###  Install `RealmSwift` to app
   - In the root project folder, run `pod init`
   - open the podfile running `open Podfile -a Xcode`
   - keep `use_frameworks!`
   - add `pod 'RealmSwift'`
   - close the pod file and go back to terminal root project folder
   - run `pod install` to install Realm and its dependencies 
+
+- ### Install `Realm Studio` to local machine
+  - Realm Studio is a desktop application to manage Realm database operations
+  - https://studio-releases.realm.io/v13.0.0
 
 ## Our Goal
 
