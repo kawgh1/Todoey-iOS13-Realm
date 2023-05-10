@@ -23,6 +23,7 @@
     - Realm provides APIs for popular programming languages such as Swift, Objective-C, Java, and Kotlin. This makes it easy to integrate Realm into an existing application or start a new application using Realm.
 
  - Overall, Realm provides a powerful and easy-to-use database solution for mobile applications, with features such as real-time synchronization, encryption, and cross-platform support.
+ - from ChatGPT
 
 - https://realm.io/
 
