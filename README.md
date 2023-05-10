@@ -1,6 +1,10 @@
 
 # Todoey ✓ using Realm
 
+## What is Realm?
+- `Realm` is a mobile database by MongoDB designed specifically for mobile applications. It is an object-oriented database that can handle large amounts of data, and supports real-time data synchronization across devices.
+- https://realm.io/
+
 ## Dev Notes
 
 - ### Cocoapods
