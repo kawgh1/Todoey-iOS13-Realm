@@ -1,9 +1,18 @@
 
 # Todoey ✓ using Realm
 
-### Dev Notes
-- Cocoapods
+## Dev Notes
+
+- ### Cocoapods
   - I had to completely uninstall `Cocoapods` with Gem running `sudo gem uninstall cocoapods` and reinstall it with `homebrew` running `homebrew install cocoapods` because M1 Macs dont support the old Intel based architecture of the Gem Cocoapods library
+  
+- ###  Install `RealmSwift`
+  - In the root project folder, run `pod init`
+  - open the podfile running `open Podfile -a Xcode`
+  - keep `use_frameworks!`
+  - add `pod 'RealmSwift'`
+  - close the pod file and go back to terminal root project folder
+  - run `pod install` to install Realm and its dependencies 
 
 ## Our Goal
 
