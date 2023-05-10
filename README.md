@@ -38,6 +38,12 @@
   - add `pod 'RealmSwift'`
   - close the pod file and go back to terminal root project folder
   - run `pod install` to install Realm and its dependencies 
+  - https://cocoapods.org/pods/RealmSwift
+
+- ### Install `SwipeCellKit` to app
+  - same steps as above
+  - create a swipable Table View for deleting a cell row with a swip and other functionality
+  - https://cocoapods.org/pods/SwipeCellKit
 
 - ### Install `Realm Studio` to local machine
   - Realm Studio is a desktop application to manage Realm database operations
