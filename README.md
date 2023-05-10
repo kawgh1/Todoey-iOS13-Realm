@@ -2,7 +2,28 @@
 # Todoey ✓ using Realm
 
 ## What is Realm?
-- `Realm` is a mobile database by MongoDB designed specifically for mobile applications. It is an object-oriented database that can handle large amounts of data, and supports real-time data synchronization across devices.
+- `Realm` is a mobile database designed specifically for mobile applications. It is an object-oriented database that can handle large amounts of data and supports real-time data synchronization across devices. Here's how Realm works:
+
+  - #### Object-oriented approach: 
+    - Realm is built around an object-oriented approach, where data is stored as objects rather than rows and columns in a table. This makes it easier to work with data and reduces the need for complex mapping between objects and tables.
+
+  - #### Client-side database: 
+    - Realm is a client-side database, which means that it is stored on the device rather than on a remote server. This allows for faster access to data and reduces the dependency on a network connection.
+
+  - #### Reactive architecture: 
+    - Realm uses a reactive architecture, which means that it automatically updates data in real-time across all devices. This is achieved through an event-driven approach, where changes made on one device are immediately propagated to all other devices.
+
+  - #### Encryption: 
+    - Realm supports encryption of the database, which ensures that the data is secure and protected from unauthorized access. The encryption keys are stored securely in the device's Keychain.
+
+  - #### Cross-platform support: 
+    - Realm supports multiple platforms, including iOS, Android, Xamarin, React Native, and Unity. This allows for easy sharing of data between different applications and platforms.
+
+  - #### Integration with popular programming languages: 
+    - Realm provides APIs for popular programming languages such as Swift, Objective-C, Java, and Kotlin. This makes it easy to integrate Realm into an existing application or start a new application using Realm.
+
+ - Overall, Realm provides a powerful and easy-to-use database solution for mobile applications, with features such as real-time synchronization, encryption, and cross-platform support.
+
 - https://realm.io/
 
 ## Dev Notes
