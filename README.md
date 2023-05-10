@@ -2,7 +2,7 @@
 # Todoey ✓ using Realm
 
 ## What is Realm?
-- `Realm` is a mobile database designed specifically for mobile applications. It is an object-oriented database that can handle large amounts of data and supports real-time data synchronization across devices. Here's how Realm works:
+- `Realm` is a mobile database solution by `MongoDB` designed specifically for mobile applications. It is an object-oriented database that can handle large amounts of data and supports real-time data synchronization across devices. Here's how Realm works:
 
   - #### Object-oriented approach: 
     - Realm is built around an object-oriented approach, where data is stored as objects rather than rows and columns in a table. This makes it easier to work with data and reduces the need for complex mapping between objects and tables.
