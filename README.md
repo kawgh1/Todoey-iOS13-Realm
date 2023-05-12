@@ -1,6 +1,12 @@
 
 # Todoey ✓ using Realm
 
+## Our Goal
+
+The objective of this tutorial is to understand how to save data in iOS. We'll look at various choices and learn to use UserDefaults, Core Data and Realm.
+
+![todoey-realm-gif](https://raw.githubusercontent.com/kawgh1/Todoey-iOS13-Realm/main/todoey-realm.gif)
+
 ## What is Realm?
 - `Realm` is a mobile database solution by `MongoDB` designed specifically for mobile applications. It is an object-oriented database that can handle large amounts of data and supports real-time data synchronization across devices. Here's how Realm works:
 
@@ -57,11 +63,6 @@
   - https://studio-releases.realm.io/v14.0.2
   
 ![open-realm-url](https://raw.githubusercontent.com/kawgh1/Todoey-iOS13-Realm/main/open%20realm%20file.png)
-
-## Our Goal
-
-
-The objective of this tutorial is to understand how to save data in iOS. We'll look at various choices and learn to use UserDefaults, Core Data and Realm.
 
 ## Data Management in iOS
 
