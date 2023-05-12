@@ -21,7 +21,21 @@ class CategoryViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         loadCategories()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = FlatSkyBlue()
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
         
     }
     
@@ -37,8 +51,17 @@ class CategoryViewController: SwipeTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
                        
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Yet!"
+        cell.selectionStyle = .none
         
-        cell.backgroundColor = UIColor.randomFlat()
+        let backgroundColorHexValue = categories?[indexPath.row].backgroundColor ?? UIColor.randomFlat().hexValue()
+        
+        
+        // gradient background colors and contrasting text color
+        
+        if let backgroundColor = UIColor(hexString: backgroundColorHexValue) {
+            cell.backgroundColor = backgroundColor
+            cell.textLabel?.textColor = ContrastColorOf(backgroundColor, returnFlat: true)
+        }
         
         return cell
     }
@@ -103,6 +126,7 @@ class CategoryViewController: SwipeTableViewController {
                 
                 let newCategory = Category()
                 newCategory.name = textField.text!
+                newCategory.backgroundColor =  UIColor.randomFlat().hexValue()
                 
                 self.saveCategory(category: newCategory)
                 

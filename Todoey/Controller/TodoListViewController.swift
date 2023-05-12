@@ -8,8 +8,10 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class TodoListViewController: SwipeTableViewController {
+    @IBOutlet weak var searchBar: UISearchBar!
     
     let realm = try! Realm()
     
@@ -26,7 +28,41 @@ class TodoListViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+ 
         
+   
+        
+    
+    }
+    
+    // called after viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let parentCategoryColor = UIColor(hexString: selectedCategory!.backgroundColor) ?? FlatSkyBlue()
+        
+        searchBar.searchTextField.backgroundColor = FlatWhite()
+        searchBar.barTintColor = parentCategoryColor
+     
+        // Page Title
+        title = selectedCategory?.name ?? "Items"
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: ContrastColorOf(parentCategoryColor, returnFlat: true)]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: ContrastColorOf(parentCategoryColor, returnFlat: true)]
+        navBarAppearance.backgroundColor = UIColor(hexString: parentCategoryColor.hexValue())
+     
+        
+        if let navBar = navigationController?.navigationBar {
+           
+            navBar.backgroundColor = UIColor(hexString: parentCategoryColor.hexValue())
+            navBar.tintColor = ContrastColorOf(parentCategoryColor, returnFlat: true)
+        }  else {
+            fatalError("Navigation Controller does not exist")
+        }
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
     
     // MARK: TableView Datasource Methods
@@ -43,6 +79,17 @@ class TodoListViewController: SwipeTableViewController {
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
             cell.accessoryType = item.done ? .checkmark : .none
+            cell.selectionStyle = .none
+            
+            // gradient background colors and contrasting text color
+            
+            let parentCategoryColor = UIColor(hexString: selectedCategory!.backgroundColor) ?? FlatSkyBlue()
+            
+            if let backgroundColor = parentCategoryColor.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
+                cell.backgroundColor = backgroundColor
+                cell.textLabel?.textColor = ContrastColorOf(backgroundColor, returnFlat: true)
+            }
+            
             
         } else {
             cell.textLabel?.text = "No Items Added Yet!"
@@ -157,6 +204,8 @@ class TodoListViewController: SwipeTableViewController {
 // MARK: - Search Bar Methods
 
 extension TodoListViewController: UISearchBarDelegate {
+    
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
