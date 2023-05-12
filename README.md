@@ -38,7 +38,7 @@
 
 - ### Install `Chameleon` to app
   - in Podfile add
-      - `pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'swift5'`
+      - `pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'`
   - Chameleon is a lightweight, yet powerful, color framework for iOS (Objective-C & Swift).
   - https://github.com/wowansm/Chameleon
 
