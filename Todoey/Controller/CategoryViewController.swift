@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class CategoryViewController: SwipeTableViewController {
     
@@ -22,10 +23,6 @@ class CategoryViewController: SwipeTableViewController {
         
         loadCategories()
         
-        tableView.rowHeight = 80.0
-
-
-        
     }
     
     // MARK: - TableView Datasource Methods
@@ -38,8 +35,10 @@ class CategoryViewController: SwipeTableViewController {
         
         // calls parent SwipeTableViewController cellForRowAt method which returns a SwipeTableViewCell
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-               
+                       
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Yet!"
+        
+        cell.backgroundColor = UIColor.randomFlat()
         
         return cell
     }
@@ -66,6 +65,21 @@ class CategoryViewController: SwipeTableViewController {
         categories = realm.objects(Category.self)
         
         tableView.reloadData()
+    }
+    
+    // Delete Data from Swipe
+    override func updateModel(at indexPath: IndexPath) {
+        // handle action by updating model with deletion
+            if let categoryToBeDeleted = self.categories?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        self.realm.delete(categoryToBeDeleted)
+                    }
+                } catch {
+                    print("Error deleting category from realm, \(error)")
+                }
+            }
+
     }
     
     // MARK: - Add New Categories
@@ -97,10 +111,16 @@ class CategoryViewController: SwipeTableViewController {
 
             alert.addAction(action)
             
-            present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true;
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertOnTapOutside)))
+        })
         
     }
     
+    @objc func dismissAlertOnTapOutside(){
+       self.dismiss(animated: true, completion: nil)
+    }
 
     
     // MARK: - TableView Delegate Methods

@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class TodoListViewController: UITableViewController {
+class TodoListViewController: SwipeTableViewController {
     
     let realm = try! Realm()
     
@@ -37,8 +37,8 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "TodoItemCell", for: indexPath)
-  
+        // calls parent SwipeTableViewController cellForRowAt method which returns a SwipeTableViewCell
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
@@ -114,9 +114,18 @@ class TodoListViewController: UITableViewController {
 
             alert.addAction(action)
             
-            present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true;
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertOnTapOutside)))
+        })
         
     }
+    
+    @objc func dismissAlertOnTapOutside(){
+       self.dismiss(animated: true, completion: nil)
+    }
+        
+    
     
     // MARK: Data Model Manipulation Methods
     
@@ -127,7 +136,23 @@ class TodoListViewController: UITableViewController {
         tableView.reloadData()
     }
     
-}
+    // Delete Data from Swipe
+    override func updateModel(at indexPath: IndexPath) {
+        // handle action by updating model with deletion
+            
+            if let itemToBeDeleted = self.todoItems?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        self.realm.delete(itemToBeDeleted)
+                    }
+                } catch {
+                    print("Error deleting item from realm, \(error)")
+                }
+            }
+
+        }
+    
+    }
 
 // MARK: - Search Bar Methods
 

@@ -13,6 +13,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 80.0
         
     }
     
@@ -35,17 +36,9 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             
-            // handle action by updating model with deletion
-//            if let categoryToBeDeleted = self.categories?[indexPath.row] {
-//                do {
-//                    try self.realm.write {
-//                        self.realm.delete(categoryToBeDeleted)
-//                    }
-//                } catch {
-//                    print("Error deleting category from realm, \(error)")
-//                }
-//            }
-//
+            self.updateModel(at: indexPath)
+            
+          
 ////            tableView.reloadData()
         }
         
@@ -62,6 +55,11 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         options.expansionStyle = .destructive
         options.transitionStyle = .border
         return options
+    }
+    
+    func updateModel(at indexPath: IndexPath) {
+        // Update our Data Model
+        
     }
     
 }
