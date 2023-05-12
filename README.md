@@ -1,10 +1,6 @@
 
 # Todoey ✓ using Realm
 
-## Our Goal
-
-The objective of this tutorial is to understand how to save data in iOS. We'll look at various choices and learn to use UserDefaults, Core Data and Realm.
-
 ![todoey-realm-gif](https://raw.githubusercontent.com/kawgh1/Todoey-iOS13-Realm/main/todoey-realm.gif)
 
 ## What is Realm?
