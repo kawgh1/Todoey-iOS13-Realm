@@ -31,6 +31,17 @@
 - ### `Cocoapods`
   - I had to completely uninstall `Cocoapods` with Gem running `sudo gem uninstall cocoapods` and reinstall it with `homebrew` running `homebrew install cocoapods` because M1 Macs dont support the old Intel based architecture of the Gem Cocoapods library
   
+- ### Install `SwipeCellKit` to app
+  - same steps as above
+  - create a swipable Table View for deleting a cell row with a swip and other functionality
+  - https://cocoapods.org/pods/SwipeCellKit
+
+- ### Install `Chameleon` to app
+  - in Podfile add
+      - `pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'swift5'`
+  - Chameleon is a lightweight, yet powerful, color framework for iOS (Objective-C & Swift).
+  - https://github.com/wowansm/Chameleon
+
 - ###  Install `RealmSwift` to app
   - In the root project folder, run `pod init`
   - open the podfile running `open Podfile -a Xcode`
@@ -40,17 +51,11 @@
   - run `pod install` to install Realm and its dependencies 
   - https://cocoapods.org/pods/RealmSwift
 
-- ### Install `SwipeCellKit` to app
-  - same steps as above
-  - create a swipable Table View for deleting a cell row with a swip and other functionality
-  - https://cocoapods.org/pods/SwipeCellKit
-
 - ### Install `Realm Studio` to local machine
   - Realm Studio is a desktop application to manage Realm database operations
   - Needs to be at `v14.0.2` to be able to run `Realm Studio` and `iOS Simulator` at same time
   - https://studio-releases.realm.io/v14.0.2
-
-
+  
 ![open-realm-url](https://raw.githubusercontent.com/kawgh1/Todoey-iOS13-Realm/main/open%20realm%20file.png)
 
 ## Our Goal
